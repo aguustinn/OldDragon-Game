@@ -2,24 +2,31 @@ from Personagem import Personagem
 from CriarPersonagem import CriarPersonagem
 from Raca import Raca
 from Atributos import Atributos
+from Classe import Classe
+import os
 
-# Criação dos objetos
 p = Personagem()
 r = Raca()
 a = Atributos()
+c = Classe()
+
 
 
 p.nome = input("Digite seu nome: ")
 p.idade = int(input("Digite sua idade: "))
+os.system('cls' if os.name == 'nt' else 'clear')
 
 
 print("\nEscolha sua raça:")
 print("1 = Elfo \n2 = Anão \n3 = Humano \n4 = Gnomo \n5 = Meio Elfo \n6 = Halfing")
 escolha = int(input("Escolha uma Raça: "))
+os.system('cls' if os.name == 'nt' else 'clear')
+print("1 = Guerreiro \n2 = Mago \n3 = Ladrão \n")
+classe = int(input("Escolha uma Classe: "))
 r.escolhaRaca(escolha)
-
-
-print(f"\n{p.nome}, {p.idade} anos, Raça: {r.raca}")
+r.atributosRaca(p.idade)
+c.escolhaClasse(classe)
+os.system('cls' if os.name == 'nt' else 'clear')
 
 
 print("\nEscolha o estilo de geração de atributos:")
@@ -41,9 +48,13 @@ elif estilo == "3":
 else:
     print("Estilo inválido. Gerando atributos com estilo clássico por padrão.")
     a.gerar_clássico()
-
+os.system('cls' if os.name == 'nt' else 'clear')
 
 print("\n--- Seus atributos finais ---")
 for nome, valor in a.AtributosRandom.items():
     desc = a.descricao(nome, valor)
     print(f"{nome.capitalize()}: {valor} → {desc}")
+print("-------------------------------------------------")
+r.mostrarAtributos()
+print("-------------------------------------------------")
+c.mostrarClasse()
