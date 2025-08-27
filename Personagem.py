@@ -1,11 +1,9 @@
-from Atributos import Atributos
 class Personagem:
-    a = Atributos 
         
-    def SkilsPersonagem(self, nome, idade, atributo):
-        
-        
-        self.nome = nome
-        self.idade = idade
-        self.a.AtributosRandom = atributo
+    def __init__(self):
+        self.nome = None
+        self.idade = None
       
+    def mostrar(self):
+        print(f"Nome: {self.nome}")
+        print(f"Idade: {self.idade}")

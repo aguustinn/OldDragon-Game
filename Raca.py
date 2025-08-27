@@ -31,9 +31,11 @@ class Raca:
             self.alinhamento = "Neutro"
             self.peso = 60
             if idade < 120:
+                self.idades = "Jovem"
+            elif idade < 450:
                 self.idades = "Adulto"
-            elif idade <= 450:
-                self.idades = "Meia Idade"
+            elif idade < 900:
+                self.idades = "Meia-Idade"
             else:
                 self.idades = "Idoso"
 
@@ -43,9 +45,11 @@ class Raca:
             self.alinhamento = "Ordem"
             self.peso = 75
             if idade < 50:
+                self.idades = "Jovem"
+            elif idade < 120:
                 self.idades = "Adulto"
-            elif idade <= 350:
-                self.idades = "Meia Idade"
+            elif idade < 350:
+                self.idades = "Meia-Idade"
             else:
                 self.idades = "Idoso"
 
@@ -55,9 +59,11 @@ class Raca:
             self.alinhamento = "Qualquer"
             self.peso = 80
             if idade < 15:
+                self.idades = "Jovem"
+            elif idade < 45:
                 self.idades = "Adulto"
-            elif idade <= 45:
-                self.idades = "Meia Idade"
+            elif idade < 90:
+                self.idades = "Meia-Idade"
             else:
                 self.idades = "Idoso"
 
@@ -67,9 +73,11 @@ class Raca:
             self.alinhamento = "Neutro"
             self.peso = 40
             if idade < 20:
+                self.idades = "Jovem"
+            elif idade < 150:
                 self.idades = "Adulto"
-            elif idade <= 150:
-                self.idades = "Meia Idade"
+            elif idade < 350:
+                self.idades = "Meia-Idade"
             else:
                 self.idades = "Idoso"
 
@@ -79,9 +87,11 @@ class Raca:
             self.alinhamento = "Caos"
             self.peso = 65
             if idade < 25:
+                self.idades = "Jovem"
+            elif idade < 80:
                 self.idades = "Adulto"
-            elif idade <= 80:
-                self.idades = "Meia Idade"
+            elif idade < 180:
+                self.idades = "Meia-Idade"
             else:
                 self.idades = "Idoso"
 
@@ -91,11 +101,14 @@ class Raca:
             self.alinhamento = "Neutro"
             self.peso = 35
             if idade < 20:
+                self.idades = "Jovem"
+            elif idade < 50:
                 self.idades = "Adulto"
-            elif idade <= 50:
-                self.idades = "Meia Idade"
+            elif idade < 100:
+                self.idades = "Meia-Idade"
             else:
                 self.idades = "Idoso"
+
         else:
             self.raca = "Desconhecida"
 

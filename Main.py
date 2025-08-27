@@ -50,7 +50,10 @@ else:
     a.gerar_clássico()
 os.system('cls' if os.name == 'nt' else 'clear')
 
+
 print("\n--- Seus atributos finais ---")
+p.mostrar()
+print("-------------------------------------------------")
 for nome, valor in a.AtributosRandom.items():
     desc = a.descricao(nome, valor)
     print(f"{nome.capitalize()}: {valor} → {desc}")
