@@ -49,6 +49,7 @@ else:
     print("Estilo inválido. Gerando atributos com estilo clássico por padrão.")
     a.gerar_clássico()
 os.system('cls' if os.name == 'nt' else 'clear')
+p.a.AtributosRandom = a
 
 
 print("\n--- Seus atributos finais ---")
