@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Distribua seus Atributos</title>
+</head>
+<body>
+    <h1>Distribua os Valores Rolados</h1>
+    <p>Valores disponíveis: <strong>{{ valores|join(', ') }}</strong></p>
+
+    <div id="dados-valores" data-valores="{{ valores|tojson }}"></div>
+    
+    <form action="/distribuir" method="post">
+        {% for atributo in atributos %}
+        <label for="{{ atributo }}">{{ atributo.capitalize() }}:</label>
+        <select name="{{ atributo }}" id="{{ atributo }}" class="atributo-select" required>
+            <option value="">--Selecione--</option>
+            {% for valor in valores|sort|unique %}
+            <option value="{{ valor }}">{{ valor }}</option>
+            {% endfor %}
+        </select><br><br>
+        {% endfor %}
+
+        <button type="submit">Finalizar Personagem</button>
+    </form>
+    
+    {% if erro %}
+    <p style="color: red;"><strong>Erro:</strong> {{ erro }}</p>
+    {% endif %}
+
+    <script>
+        // 2. Lemos os dados do nosso elemento HTML em vez de usar o Jinja diretamente no script
+        const elementoDados = document.getElementById('dados-valores');
+        const valoresRolados = JSON.parse(elementoDados.dataset.valores);
+        
+        // O restante do script permanece exatamente o mesmo
+        const selects = document.querySelectorAll('.atributo-select');
+
+        const contagemDisponivel = valoresRolados.reduce((acc, valor) => {
+            acc[valor] = (acc[valor] || 0) + 1;
+            return acc;
+        }, {});
+
+        function atualizarOpcoesDisponiveis() {
+            const contagemSelecionada = {};
+            selects.forEach(select => {
+                const valor = select.value;
+                if (valor) {
+                    contagemSelecionada[valor] = (contagemSelecionada[valor] || 0) + 1;
+                }
+            });
+
+            selects.forEach(select => {
+                const valorAtualDesteSelect = select.value;
+                select.querySelectorAll('option').forEach(option => {
+                    if (!option.value) return; 
+
+                    const valorDaOpcao = option.value;
+                    const selecionados = contagemSelecionada[valorDaOpcao] || 0;
+                    const disponiveis = contagemDisponivel[valorDaOpcao] || 0;
+
+                    if (selecionados >= disponiveis && valorDaOpcao !== valorAtualDesteSelect) {
+                        option.style.display = 'none';
+                    } else {
+                        option.style.display = 'block';
+                    }
+                });
+            });
+        }
+
+        selects.forEach(select => {
+            select.addEventListener('change', atualizarOpcoesDisponiveis);
+        });
+
+        document.addEventListener('DOMContentLoaded', atualizarOpcoesDisponiveis);
+    </script>
+</body>
+</html>

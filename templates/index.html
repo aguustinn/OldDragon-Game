@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Criador de Personagem de RPG</title>
+</head>
+<body>
+    <h1>Crie seu Personagem</h1>
+    <form action="/" method="post">
+        <label for="nome">Nome:</label><br>
+        <input type="text" id="nome" name="nome" required><br><br>
+
+        <label for="idade">Idade:</label><br>
+        <input type="number" id="idade" name="idade" required><br><br>
+
+        <label for="raca">Escolha sua Raça:</label><br>
+        <select name="raca" id="raca">
+            <option value="Humano">Humano</option>
+            <option value="Elfo">Elfo</option>
+            <option value="Anão">Anão</option>
+            <option value="Gnomo">Gnomo</option>
+            <option value="Meio Elfo">Meio Elfo</option>
+            <option value="Halfling">Halfling</option>
+        </select><br><br>
+
+        <label for="classe">Escolha sua Classe:</label><br>
+        <select name="classe" id="classe">
+            <option value="Guerreiro">Guerreiro</option>
+            <option value="Mago">Mago</option>
+            <option value="Ladrão">Ladrão</option>
+        </select><br><br>
+
+        <label for="metodo_atributos">Método de Distribuição de Atributos:</label><br>
+        <select name="metodo_atributos" id="metodo_atributos">
+            <option value="classico">Clássico (3d6 na ordem)</option>
+            <option value="aventureiro">Aventureiro (3d6 com distribuição)</option>
+            <option value="heroico">Heróico (4d6 descarta menor com distribuição)</option>
+        </select><br><br>
+
+        <button type="submit">Gerar Atributos</button>
+    </form>
+</body>
+</html>

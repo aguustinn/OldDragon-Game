@@ -1,4 +1,4 @@
-from Personagem import Personagem  
+from personagem import Personagem  
 
 class CriarPersonagem:
     

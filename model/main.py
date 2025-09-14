@@ -1,8 +1,8 @@
-from Personagem import Personagem
-from CriarPersonagem import CriarPersonagem
-from Raca import Raca
-from Atributos import Atributos
-from Classe import Classe
+from personagem import Personagem
+from model.criar_personagem import CriarPersonagem
+from raca import Raca
+from atributos import Atributos
+from classe import Classe
 import os
 
 p = Personagem()
