@@ -3,28 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Ficha do Personagem</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Ficha Final do Personagem</h1>
-    
-    <h3>Informações Básicas</h3>
-    <p><strong>Nome:</strong> {{ personagem.nome }}</p>
-    <p><strong>Idade:</strong> {{ personagem.idade }} ({{ personagem.raca.faixa_etaria }})</p>
-    <p><strong>Raça:</strong> {{ personagem.raca.nome }}</p>
-    <p><strong>Classe:</strong> {{ personagem.classe.nome }}</p>
-    
-    <h3>Atributos Raciais</h3>
-    <p><strong>Movimento:</strong> {{ personagem.raca.movimento }}</p>
-    <p><strong>Infravisão:</strong> {{ personagem.raca.infravisao }}</p>
-    <p><strong>Alinhamento Padrão:</strong> {{ personagem.raca.alinhamento }}</p>
+    <div class="container">
+        <h1>Ficha Final do Personagem</h1>
 
-    <h3>Atributos</h3>
-    <ul>
-        {% for nome, valor in personagem.atributos.valores.items() %}
-        <li><strong>{{ nome.capitalize() }}:</strong> {{ valor }} ({{ personagem.atributos.descricao(nome, valor) }})</li>
-        {% endfor %}
-    </ul>
+        <div class="sheet-grid">
 
-    <a href="/">Criar outro personagem</a>
+            <div class="sheet-column">
+                <div class="sheet-section">
+                    <h3>Informações Básicas</h3>
+                    <p><strong>Nome:</strong> {{ personagem.nome }}</p>
+                    <p><strong>Idade:</strong> {{ personagem.idade }} ({{ personagem.raca.faixa_etaria }})</p>
+                    <p><strong>Raça:</strong> {{ personagem.raca.nome }}</p>
+                    <p><strong>Classe:</strong> {{ personagem.classe.nome }}</p>
+                </div>
+                
+                <div class="sheet-section">
+                    <h3>Atributos Raciais</h3>
+                    <p><strong>Movimento:</strong> {{ personagem.raca.movimento }}</p>
+                    <p><strong>Infravisão:</strong> {{ personagem.raca.infravisao }}</p>
+                    <p><strong>Alinhamento Padrão:</strong> {{ personagem.raca.alinhamento }}</p>
+                </div>
+            </div>
+
+            <div class="sheet-column">
+                <div class="sheet-section">
+                    <h3>Atributos</h3>
+                    <ul class="attributes-list">
+                        {% for nome, valor in personagem.atributos.valores.items() %}
+                        <li>
+                            <strong>{{ nome.capitalize() }}:</strong> 
+                            <span>{{ valor }} ({{ personagem.atributos.descricao(nome, valor) }})</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <a href="/" class="btn-secondary">Criar outro personagem</a>
+    </div>
 </body>
 </html>

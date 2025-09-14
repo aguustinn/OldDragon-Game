@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=MedievalSharp&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Lora', serif;
+    background-color: #3d2f23; 
+    background-image: url('../images/wood-background.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: #3a2c20;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background-color: rgba(243, 233, 210, 0.92); 
+    border: 3px double #9f7e5c; 
+    border-radius: 5px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7); 
+}
+
+
+h1 {
+    font-family: 'MedievalSharp', cursive;
+    color: #6a4c3a;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    text-shadow: 1px 1px #f3e9d2;
+}
+
+
+h3 {
+    font-family: 'MedievalSharp', cursive;
+    color: #6a4c3a;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #d1bba4; 
+}
+
+p {
+    margin-bottom: 0.5rem; 
+}
+
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+    color: #6a4c3a;
+    display: block;
+}
+
+input[type="text"], input[type="number"], select {
+    width: 100%;
+    padding: 10px;
+    background-color: #f1e7cf;
+    border: 1px solid #c8b897;
+    border-radius: 4px;
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    color: #3a2c20;
+    transition: all 0.2s ease-in-out;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #a88762;
+    box-shadow: 0 0 8px rgba(138, 108, 74, 0.4);
+}
+
+button {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 1.3rem;
+    background-color: #6a4c3a;
+    color: #f5e8c7;
+    padding: 12px 20px;
+    border: 2px solid #3a2c20;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 1rem;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+}
+
+button:hover {
+    background-color: #8a6c4a;
+    transform: translateY(-2px);
+}
+
+
+
+
+.sheet-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 2.5rem; 
+}
+
+
+.sheet-section {
+    margin-bottom: 2rem;
+}
+
+.sheet-section p strong {
+    color: #6a4c3a;
+}
+
+
+.attributes-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.attributes-list li {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px dashed #c8b897;
+}
+
+.attributes-list li:last-child {
+    border-bottom: none;
+}
+
+.attributes-list strong {
+    color: #6a4c3a;
+}
+
+
+.btn-secondary {
+    display: block;
+    width: fit-content;
+    margin: 2.5rem auto 0;
+    padding: 10px 20px;
+    border: 2px solid #6a4c3a;
+    border-radius: 5px;
+    color: #6a4c3a;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #6a4c3a;
+    color: #f5e8c7;
+    text-decoration: none;
+}
+
+
+
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    
+    .sheet-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+.welcome-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas de largura igual */
+    gap: 3rem; /* Espaço maior entre a imagem e o formulário */
+    align-items: center; /* Alinha verticalmente a imagem e o formulário */
+}
+
+.welcome-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    border: 3px solid #9f7e5c;
+}
+
+
+.welcome-form h1 {
+    margin-bottom: 1.5rem;
+}
+
+
+@media (max-width: 900px) { 
+    .container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    
+    .sheet-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    
+    .welcome-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
