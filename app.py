@@ -1,3 +1,4 @@
+import json
 from flask import Flask, render_template, request, redirect, url_for, session
 from model.personagem import Personagem
 from model.raca import Raca
@@ -45,7 +46,7 @@ def distribuir():
         return redirect(url_for('index'))
 
     valores = session['valores_para_distribuir']
-    nomes_atributos = ["forca", "destreza", "constituicao", "inteligencia", "sabedoria", "carisma"]
+    nomes_atributos = ["forca", "destrza", "constituicao", "inteligencia", "sabedoria", "carisma"]
 
     if request.method == 'POST':
         atributos_finais = {}
@@ -56,13 +57,13 @@ def distribuir():
             atributos_finais[nome] = valor
             valores_escolhidos.append(valor)
         
-        # Validação: verifica se o usuário usou os valores corretos
+        
         if sorted(valores) != sorted(valores_escolhidos):
             erro = "Valores inválidos ou repetidos foram escolhidos. Por favor, atribua cada valor rolado a um único atributo."
             return render_template('distribuir_atributos.html', valores=valores, atributos=nomes_atributos, erro=erro)
 
         session['atributos_finais'] = atributos_finais
-        session.pop('valores_para_distribuir', None) # Limpa a session
+        session.pop('valores_para_distribuir', None) 
         return redirect(url_for('resultado'))
 
     return render_template('distribuir_atributos.html', valores=valores, atributos=nomes_atributos)
@@ -81,10 +82,23 @@ def resultado():
     p.classe = Classe(session['classe_nome'])
     p.atributos.valores = session['atributos_finais']
 
+   
+    try:
+        
+        filename = "personagem.json"
+        
+        with open(filename, 'w', encoding='utf-8') as f:
+            json.dump(p, f, indent=4, ensure_ascii=False, default=lambda o: o.__dict__)
+            
+    except Exception as e:
+       
+        print(f"ERRO: Não foi possível salvar o personagem em JSON. {e}")
+    
     
     session.clear()
 
     return render_template('resultado.html', personagem=p)
 
 if __name__ == '__main__':
+    
     app.run(debug=True)
